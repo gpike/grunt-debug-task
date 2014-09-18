@@ -44,7 +44,7 @@ grunt.initConfig({
   debug: {
     options: {
       open: false // do not open node-inspector in Chrome automatically
-      port: '8585' //Optionally override port for noed-inspector to attach to.
+      port: '8585' //Optionally override port for noed-inspector to attach to.  
     }
   },
 });

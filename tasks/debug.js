@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       var gruntModule = process.argv[1];
       var args = process.argv.slice(2).filter(function(arg) {return arg !== 'debug';});
       grunt.log.writeln(gruntModule + ' ' + args.join(' '));
-      var debugProcess = fork(gruntModule, args, {execArgv: ['--debug-brk']});
+      var debugProcess = fork(gruntModule, args, {execArgv: ['--debug-brk', '--debug-port=' + oprions.port]});
       debugProcess.on('exit', function(code) {
           if (nodeInspectorProcess) {
               nodeInspectorProcess.kill();
