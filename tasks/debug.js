@@ -23,7 +23,8 @@ module.exports = function(grunt) {
 
       // Merge task-specific options with these defaults
       var options = this.options({
-          open: true
+          open: true,
+          port: '5858'
       });
 
       // take tasks after debug and run them in new process with --debug-brk
@@ -42,7 +43,7 @@ module.exports = function(grunt) {
       // determine node-inspector script path
       // append ".cmd" extension for windows platform
       var nodeInspectorPath = path.join(__dirname, '../node_modules/.bin/node-inspector');
-      if (process.platform.indexOf("win") == 0) {
+      if (process.platform.indexOf("win") === 0) {
         nodeInspectorPath += ".cmd";
       }
 
@@ -54,7 +55,7 @@ module.exports = function(grunt) {
 
       // open node-inspector in Chrome (when ready)
       if (options.open) {
-          var NODE_INSPECTOR_URL = 'http://127.0.0.1:8080/debug?port=5858';
+          var NODE_INSPECTOR_URL = 'http://127.0.0.1:8080/debug?port=' + options.port;
           var nodeInspectorOut = '', isOpen = false;
           nodeInspectorProcess.stdout.on('data', function(chunk) {
               nodeInspectorOut += chunk;
