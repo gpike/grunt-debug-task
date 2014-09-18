@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 
       // start node-inspector
       // TODO: use fork instead of spawn?
-      var nodeInspectorProcess = spawn(nodeInspectorPath);
+      var nodeInspectorProcess = spawn(nodeInspectorPath, ['--debug-port=' + options.port]);
       nodeInspectorProcess.stdout.pipe(process.stdout);
       nodeInspectorProcess.stderr.pipe(process.stderr);
 
